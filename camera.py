@@ -9,9 +9,8 @@ count = len([name for name in os.listdir(".")])
 camera = PiCamera()
 
 camera.start_preview()
-
-sleep(5)
-
-camera.capture('./image' + str(count) + '.jpg')
+for i in range(10):
+	sleep(4)
+	camera.capture('./image' + str(count) + '.jpg')
 
 camera.stop_preview()
