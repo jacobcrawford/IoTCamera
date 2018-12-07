@@ -18,6 +18,14 @@
 
 `sudo apt-get install python3-picamera`
 
-7. Run the script 
+7. Spend 4 hours installing openCV
 
-`python3 camera.py` 
+8. install mqtt client
+
+` pip install paho-mqtt`
+
+# You can now run:
+
+`python camera.py` To open a websocket connection an send a picture analysed with openCV
+OR
+`python mqtt_camera.py` To publish to a mqtt broker if a person is detected by the camera or not

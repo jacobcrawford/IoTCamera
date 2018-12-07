@@ -16,7 +16,6 @@ camera = PiCamera()
 camera.start_preview()
 
 #Define functions for mqtt client
-
 def on_connect(client,userdata,flags,rc):
 	print("Broker connection established")
 
@@ -30,9 +29,11 @@ client.connect(host,port,7200)
 # Let the camera warm up
 sleep(2)
 
+#Let camera warm up
+sleep(2)
+
 while True:
 	client.loop()
-	#file_name = "./image" + str(i) + ".jpg"
 	file_name = "./image.jpg"
 	sleep(0.1)
 	# Take picture
@@ -46,7 +47,6 @@ while True:
 	faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
 	#Check if any faces are there
-	
 	if isinstance(faces, tuple):
 		client.publish("pi/cam/value",str({'time':current,'value':0}))
 		print("0 published")
@@ -54,8 +54,8 @@ while True:
 		client.publish("pi/cam/value",str({'time':current, 'value':1}))
 		print("1 published")
 
-	
+
 camera.stop_preview()
 
-print( "Done sending image")
+
 
